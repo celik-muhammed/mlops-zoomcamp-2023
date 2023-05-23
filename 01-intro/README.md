@@ -129,8 +129,8 @@ ssh mlops-zoomcamp
 # Local: connect and check active environment conda base on WSL on Windows
 wsl
 
-# Local: connect and check active environment conda base on Linux
-# close and reopen linux terminal
+# Local: connect and check active environment conda base on Mac, Linux
+# close and reopen mac, linux terminal
 ```
 
 ### Step 2: Update existing packages
