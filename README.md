@@ -36,7 +36,7 @@ Our MLOps Zoomcamp course
 * Why do we need MLOps
 * Course overview
 * Environment preparation
-* [Homework](./01-intro/Ride Duration Prediction using Regression Analysis.ipynb)
+* [Homework](./01-intro/Ride-Duration-Prediction-using-Regression-Analysis.ipynb)
 
 #### [Go to MLOPS Environment Preparation](./01-intro/README.md)
 
