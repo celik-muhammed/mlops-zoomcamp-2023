@@ -1,7 +1,7 @@
 # 1. Introduction
 
 
-## MLOPS Environment Preparation
+## MLOPS conda Environment Preparation Cloud or Local
 
 **Note**: You don't have to rent an instance in the cloud. Skip the Cloud Steps go to Environment Steps, then You can follow the same instructions 
 for setting up your local environment. `Recommended development environment: Mac, Linux, WSL on Windows`. Another Option: Windows but Not Recommended.
