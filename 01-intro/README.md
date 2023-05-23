@@ -10,6 +10,8 @@ for setting up your local environment. `Recommended development environment: Mac
 ## Cloud Steps:
 
 ### Cloud Step 1: Create an AWS Account for EC2 Instance.
+- https://portal.aws.amazon.com/billing/signup#/start/email
+- https://console.aws.amazon.com/console/home
 - Build EC2 Instance: Ubuntu Linux with free tier configuration
 	- Give Name EC2 Instance: mlops-... 
 	- t2.micro (free tier)
@@ -17,8 +19,15 @@ for setting up your local environment. `Recommended development environment: Mac
 	- Disk Space: 30 GB (max free tier)
 - Start Created EC2 Instance
 
+#### or Create an Deploifai (on AWS, Azure, or GCP) Account.
+- https://github.com/98sean98/mlops-zoomcamp/blob/main/01-intro/deploifai-server/readme.md
 
-### Cloud Step 2: Connect Ubuntu EC2 Instance
+#### or Create an Google Cloud Account.
+- https://cloud.google.com/
+- https://github.com/piyush-an/MLOps-ZoomCamp/blob/main/01-Introduction/infrastructure.md
+
+
+### Cloud Step 2: Connect Amazon Ubuntu EC2 Instance
 
 #### Cloud Step 2.1: Open Local Terminal or GIT Bash on Mac, Linux, WSL
 
@@ -83,8 +92,8 @@ nano ~/.ssh/config
 # Copy Configuration in local nano editor, then Save it! 
 Host mlops-zoomcamp             # ssh connection calling name
     User ubuntu                 # username
-    HostName 44.206.241.110     # public ip 
-    IdentityFile ~/.ssh/name-of-your-private-key-file.pem   # pem file path
+    HostName 44.206.241.110     # Public IP
+    IdentityFile ~/.ssh/name-of-your-private-key-file.pem   # Private SSH key file path
     StrictHostKeyChecking no
 ```
   
