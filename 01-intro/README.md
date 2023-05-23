@@ -123,11 +123,14 @@ bash Anaconda3-2022.05-Linux-x86_64.sh
 # exit
 logout
 
-# connect and check active environment conda base on wsl
+# Cloud: connect and check active environment conda base on EC2
+ssh mlops-zoomcamp
+
+# Local: connect and check active environment conda base on WSL on Windows
 wsl
 
-# connect and check active environment conda base on EC2
-ssh mlops-zoomcamp
+# Local: connect and check active environment conda base on Linux
+# close and reopen linux terminal
 ```
 
 ### Step 2: Update existing packages
