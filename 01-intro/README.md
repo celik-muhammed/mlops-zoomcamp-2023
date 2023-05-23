@@ -18,7 +18,7 @@ for setting up your local environment. `Recommended development environment: Mac
 - Start Created EC2 Instance
 
 
-### Cloud Step 2: Connect Ubentu EC2 Instance
+### Cloud Step 2: Connect Ubuntu EC2 Instance
 
 #### Cloud Step 2.1: Open Local Terminal or GIT Bash on Mac, Linux, WSL
 
