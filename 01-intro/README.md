@@ -92,7 +92,7 @@ nano ~/.ssh/config
 # Copy Configuration in local nano editor, then Save it! 
 Host mlops-zoomcamp             # ssh connection calling name
     User ubuntu                 # username
-    HostName 44.206.241.110     # Public IP
+    HostName 44.206.241.110     # Public IP, it changes when Source EC2 is turned off.
     IdentityFile ~/.ssh/name-of-your-private-key-file.pem   # Private SSH key file path
     StrictHostKeyChecking no
 ```
