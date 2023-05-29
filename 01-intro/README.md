@@ -1,5 +1,6 @@
-# 1. Introduction
+Source: https://github.com/DataTalksClub/mlops-zoomcamp
 
+# 1. Introduction
 
 ## MLOPS conda Environment Preparation Cloud or Local
 
@@ -29,10 +30,10 @@ for setting up your local environment. `Recommended development environment: Mac
 
 ### Cloud Step 2: Connect Amazon Ubuntu EC2 Instance
 
-#### Cloud Step 2.1: Open Local Terminal or GIT Bash on Mac, Linux, WSL
+#### Cloud Step 2.1: Open Local Terminal or GIT Bash on Mac, Linux, WSL on Windows
 
 ```sh
-# For Windows Bash to Connect WSL
+# For Windows Git Bash to Connect WSL
 wsl
 ```
 
@@ -46,39 +47,49 @@ sudo apt update
 #### Cloud Step 2.3: Check local home folder
 
 ```sh
-# Go to local home folder
+# Go to local HOME folder
 cd
-
-# Check local directory is in home folder
+```
+```sh  
+# Check local directory is in HOME folder
 pwd
-
-# Check local home folder
+```
+```sh  
+# Check local HOME folders inside
 ls -al
 ```
 
 #### Cloud Step 2.4: Create local .ssh folder, then copy in ssh key *.pem
-**Note**: If you get `It is required that your private key files are NOT accessible by others. This private key will be ignored.` error, you should change permits on the downloaded file to protect your private key:
 
 ```sh
-# Create local .ssh folder
-mkdir .ssh
-
+# Create local .ssh folder in HOME folder
+mkdir -p .ssh
+```
+```sh  
 # Go to local .ssh folder
 cd .ssh/
-
+```
+```sh  
 # Copy local *.pem key to in .ssh folder
 cp "pem key path" .
-
-# or Copy Manual local mac
+```
+```sh 
+# or Copy Manual local mac, linux, wsl on windows
 open .
-
+```
+```sh 
 # or Copy Manual local wsl
 explorer.exe .
-
+```
+```sh 
 # or Copy Manual local linux
 sudo apt install nautilus -y
 nautilus .
+```
 
+**Note**: If you get `It is required that your private key files are NOT accessible by others. This private key will be ignored.` error, you should change permits on the downloaded file to protect your private key:
+
+```sh 
 # for local ssh pem key permission error
 chmod 400 ~/.ssh/name-of-your-private-key-file.pem
 ```
@@ -88,13 +99,15 @@ chmod 400 ~/.ssh/name-of-your-private-key-file.pem
 ```sh
 # Build local ssh config File with nano editor in .ssh folder
 nano ~/.ssh/config
-
+```
+```sh 
 # Copy Configuration in local nano editor, then Save it! 
-Host mlops-zoomcamp             # ssh connection calling name
-    User ubuntu                 # username
-    HostName 44.206.241.110     # Public IP, it changes when Source EC2 is turned off.
+Host mlops-zoomcamp                                         # ssh connection calling name
+    User ubuntu                                             # username
+    HostName 44.206.241.110                                 # Public IP, it changes when Source EC2 is turned off.
     IdentityFile ~/.ssh/name-of-your-private-key-file.pem   # Private SSH key file path
-    StrictHostKeyChecking no
+    LocalForward 8888 localhost:8888                        # Connecting to a service on an internal network from the outside or set via on vscode 
+    StrictHostKeyChecking no   
 ```
   
 #### Cloud Step 2.6: Connect Created EC2 Instance
@@ -102,10 +115,13 @@ Host mlops-zoomcamp             # ssh connection calling name
 ```sh  
 # Connect Created EC2 Instance
 ssh mlops-zoomcamp
-
-# Check user is Connected EC2
-
-# for exit
+```
+```sh 
+# Check USER is Connected EC2
+whoami
+```
+```sh 
+# for exit from AWS EC2 
 logout
 ```
 
@@ -116,21 +132,23 @@ logout
 ```sh
 # Download
 wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
-
-# Setup - Attention make sure after installing type yes for auto connect conda enviroment 
+```
+```sh 
+# Setup - Attention make sure after installing type yes for AUTO connect conda enviroment 
 bash Anaconda3-2022.05-Linux-x86_64.sh
-
-# exit
+```
+```sh 
+# exit AWS EC2 or mac, linux, WSL on Windows
 logout
-
-# Cloud: connect and check active environment conda base on EC2
+```
+```sh 
+# Cloud: connect and check ACTIVE environment conda base on AWS EC2
 ssh mlops-zoomcamp
-
-# Local: connect and check active environment conda base on WSL on Windows
+```
+```sh 
+# Local: connect and check ACTIVE environment conda base on Mac, Linux: close and reopen mac, linux terminal
+# Local: connect and check ACTIVE environment conda base on WSL on Windows
 wsl
-
-# Local: connect and check active environment conda base on Mac, Linux
-# close and reopen mac, linux terminal
 ```
 
 ### Step 2: Update existing packages
@@ -140,6 +158,7 @@ sudo apt update
 ```
 
 ### Step 3: Install Docker
+- https://www.simplilearn.com/tutorials/docker-tutorial
 
 ```sh
 sudo apt install docker.io
@@ -153,12 +172,12 @@ sudo usermod -aG docker $USER
 ```
 
 ### Step 4: Install Docker Compose
+- https://www.simplilearn.com/tutorials/docker-tutorial/docker-compose#GoTop
 
 Install docker-compose in a separate directory
 
 ```sh
-mkdir soft
-cd soft
+mkdir -p ~/soft && cd ~/soft
 ```
 
 To get the latest release of Docker Compose, go to https://github.com/docker/compose and download the release for your OS.
@@ -191,32 +210,33 @@ Save it and run the following to make sure the changes are applied:
 source ~/.bashrc
 ```
 
-
 ### Step 5: Run Docker
+
+**Note**: If you get `docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/create": dial unix /var/run/docker.sock: connect: permission denied.` error, restart your VM instance. 
 
 ```sh
 docker run hello-world
 ```
 
-If you get `docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/create": dial unix /var/run/docker.sock: connect: permission denied.` error, restart your VM instance. 
-
-
-
 ### Step 6: Run jupyter notebook
 
 ```sh
-# go to home 
+# go to wsl home 
 cd
-
-# for WSL - go to local windows home
+```
+```sh 
+# for WSL - go to local HOME windows
 cd /mnt/c/Users/your-windows-username
-
-# create folder jupyter_notebook, then go
+```
+```sh 
+# create folder jupyter_notebook in HOME folder, then go
 mkdir -p jupyter_notebook && cd jupyter_notebook
-
+```
+```sh 
 # run jupyter notebook
 jupyter notebook
-
+```
+```sh 
 # for WSL - Close Tilix: Terminal 
 # Click to any Link access the notebook on Terminal with Ctrl+
 ```
@@ -226,10 +246,10 @@ jupyter notebook
 ```sh
 # Python Version Check
 !python -V
-
+```
+```sh 
 # Python path check
 !which python
-
 ```
 
 # Ready For Any Project
