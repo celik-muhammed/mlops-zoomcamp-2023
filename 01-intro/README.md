@@ -253,3 +253,66 @@ jupyter notebook
 ```
 
 # Ready For Any Project
+
+## Useful Scripts
+
+### Install or update the AWS CLI
+- https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+```sh
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+sudo apt install unzip -y
+unzip awscliv2.zip
+sudo ./aws/install
+```
+```sh
+# IAM > Security credentials > Create access key
+# Use access keys to send programmatic calls to AWS from the AWS CLI
+aws configure
+```
+
+### AWS EC2 IP Updater for SSH Configuration
+
+**Note**: This script automatically updates the IP address of your EC2 instance in your SSH config file. This can be useful if your instance's IP address changes frequently (for example, when stopping and starting an EC2 instance).
+
+```sh
+# open and save the following bash script for AWS EC2 ip update:
+nano ~/.ssh/update_ssh_config.sh
+```
+
+Save the following bash script in a file named `update_ssh_config.sh`, replacing `your_instance_id_here` with your actual AWS EC2 instance ID:
+
+```sh
+#!/bin/bash
+INSTANCE_ID=your_instance_id_here
+REGION=us-east-1
+
+# Get the new public IP address of the EC2 instance
+NEW_IP=$(aws ec2 describe-instances  --instance-ids $INSTANCE_ID  --region $REGION --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
+
+# Define the config template
+read -r -d '' SSH_CONFIG << EOM
+
+# Updated Configuration in local .ssh/config
+Host mlops-zoomcamp                         # ssh connection calling name
+    User ubuntu                             # username AWS EC2
+    HostName $NEW_IP                        # Public IP, it changes when Source EC2 is turned off.
+    IdentityFile ~/.ssh/mlops-zoomcamp.pem  # Private SSH key file path
+    LocalForward 8888 localhost:8888        # Connecting to a service on an internal network from the outside, static forward or set port user forward via on vscode
+    StrictHostKeyChecking no
+EOM
+
+# Write the new SSH config
+echo "$SSH_CONFIG" > ~/.ssh/config
+echo "Updated ssh config file"
+```
+
+```sh
+# Make the script executable
+chmod +x ~/.ssh/update_ssh_config.sh
+```
+
+```sh
+# Run the script update: AWS EC2 IP Adress
+~/.ssh/update_ssh_config.sh
+```
