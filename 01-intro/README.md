@@ -106,7 +106,7 @@ Host mlops-zoomcamp                                         # ssh connection cal
     User ubuntu                                             # username
     HostName 44.206.241.110                                 # Public IP, it changes when Source EC2 is turned off.
     IdentityFile ~/.ssh/name-of-your-private-key-file.pem   # Private SSH key file path
-    LocalForward 8888 localhost:8888                        # Connecting to a service on an internal network from the outside or set via on vscode 
+    LocalForward 8888 localhost:8888                        # Connecting to a service on an internal network from the outside, static forward or set port user forward via on vscode 
     StrictHostKeyChecking no   
 ```
   
