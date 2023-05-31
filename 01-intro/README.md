@@ -353,6 +353,8 @@ Did you take notes? Add them here:
 * [Module 1 Notes by Stephen Barrie](https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOps_Zoomcamp_Week_1.html)
 * Send a PR, add your notes above this line
 
+* [Building and Scaling a Machine Learning Platform - Magdalena Kuhn](https://www.youtube.com/watch?v=bNrBJwiLBWU)
+
 
 ## Useful Scripts
 
