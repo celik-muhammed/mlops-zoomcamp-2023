@@ -277,8 +277,14 @@ jupyter notebook
 # or 500+ mb
 !pip install tensorflow --no-cache-dir
 ```
-
-
+```sh 
+# check and repair packages conflict
+!conda update --all
+```
+```sh 
+# check and repair packages conflict
+!conda update --all
+```
 
 ## 1.3 (Optional) Training a ride duration prediction model
 
