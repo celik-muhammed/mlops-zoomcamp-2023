@@ -271,6 +271,12 @@ jupyter notebook
 # Python path check
 !which python
 ```
+```sh 
+# EC2 install Tensorflow 200+ mb
+!pip install tensorflow-cpu
+# or 500+ mb
+!pip install tensorflow --no-cache-dir
+```
 
 
 
@@ -392,7 +398,7 @@ EOM
 
 # Write the new SSH config
 echo "$SSH_CONFIG" > ~/.ssh/config
-echo "Updated ssh config file"
+echo "Updated IP: $NEW_IP"
 ```
 
 ```sh
