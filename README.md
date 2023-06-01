@@ -29,10 +29,14 @@ Our MLOps Zoomcamp course
 
 
 ## What Does MLOps Mean?
+
 - **`Machine learning operations (MLOps)`** is an approach to managing the entire lifecycle of a machine learning model — including its training, tuning, everyday use in a production environment and retirement.
 - **`MLflow`** is an open source platform for managing the end-to-end machine learning lifecycle.
 
+
 ## Syllabus
+
+#### [Go to: MLOPS Environment Preparation](./01-intro/README.md)
 
 ### [Module 1: Introduction](01-intro)
 * What is MLOps
@@ -42,8 +46,6 @@ Our MLOps Zoomcamp course
 * Course overview
 * Environment preparation
 * [Submitted Homework](./01-intro/Ride-Duration-Prediction-using-Regression-Analysis.ipynb)
-
-#### [Go to MLOPS Environment Preparation](./01-intro/README.md)
 
 [More details](01-intro)
 
