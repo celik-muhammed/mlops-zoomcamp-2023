@@ -36,7 +36,7 @@ Our MLOps Zoomcamp course
 * Why do we need MLOps
 * Course overview
 * Environment preparation
-* [Homework](./01-intro/Ride-Duration-Prediction-using-Regression-Analysis.ipynb)
+* [Submitted Homework](./01-intro/Ride-Duration-Prediction-using-Regression-Analysis.ipynb)
 
 #### [Go to MLOPS Environment Preparation](./01-intro/README.md)
 
@@ -50,7 +50,7 @@ Our MLOps Zoomcamp course
 * Saving and loading models with MLflow
 * Model registry
 * MLflow in practice
-* Homework
+* [Submitted Homework](./02-experiment-tracking)
 
 [More details](02-experiment-tracking)
 
