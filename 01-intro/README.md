@@ -179,6 +179,8 @@ sudo apt update
 
 ### Step 3: Install Docker
 - https://www.simplilearn.com/tutorials/docker-tutorial
+- https://www.simplilearn.com/tutorials/docker-tutorial/how-to-install-docker-on-ubuntu
+- https://docs.docker.com/engine/install/linux-postinstall/
 
 ```sh
 sudo apt install docker.io
@@ -363,6 +365,7 @@ Did you take notes? Add them here:
 
 ### Install or update the AWS CLI
 - https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+- https://linuxhint.com/install_aws_cli_ubuntu/
 
 ```sh
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
