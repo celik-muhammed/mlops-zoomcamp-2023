@@ -145,6 +145,7 @@ logout
 
 ## Environment Steps:   
 
+- https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#2-install-wsl
 - [Setting up WSL for a Seamless Data Science Workflow on Windows](https://www.youtube.com/watch?v=IWfsbOzQgXA)
 
 ### Step 1: Download and install the Anaconda distribution of Python.
