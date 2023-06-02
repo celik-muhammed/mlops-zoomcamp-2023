@@ -61,7 +61,7 @@ wsl
 
 ```sh
 # Update existing local packages
-sudo apt update
+sudo apt update -y && sudo apt upgrade -y
 ```
 
 #### Cloud Step 2.3: Check local home folder
@@ -234,7 +234,7 @@ ssh mlops-zoomcamp
 ### Step 2: Update existing packages
 
 ```sh
-sudo apt update -y && sudo apt upgrade -y
+sudo apt update -y
 ```
 
 
