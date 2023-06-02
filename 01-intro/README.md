@@ -352,8 +352,9 @@ jupyter notebook
 !conda update --all
 ```
 ```sh 
-# remove unused packages and clear cache
+# Attention!, remove unused packages and clear cache, can be remove spme Useful packegec need to install them
 !conda clean --all
+!conda install protobuf   # example
 ```
 
 ## 1.3 (Optional) Training a ride duration prediction model
