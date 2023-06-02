@@ -441,6 +441,10 @@ sudo ./aws/install
 ```sh
 # IAM > Security credentials > Create access key
 # Use access keys to send programmatic calls to AWS from the AWS CLI
+# AWS Access Key ID [None]	: Access key
+# AWS Secret Access Key [None]	: Secret access key
+# Default region name [None]	: us-east-1
+# Default output format [None]	: text
 aws configure
 ```
 
@@ -459,9 +463,14 @@ Save the following bash script in a file named `update_ssh_config.sh`, replacing
 #!/bin/bash
 INSTANCE_ID=your_instance_id_here
 REGION=us-east-1
+OUTPUT=text
 
 # Get the new public IP address of the EC2 instance
-NEW_IP=$(aws ec2 describe-instances  --instance-ids $INSTANCE_ID  --region $REGION --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
+NEW_IP=$(aws ec2 describe-instances  \
+                --instance-ids $INSTANCE_ID  \
+                --region $REGION \
+                --output $OUTPUT \
+                --query 'Reservations[0].Instances[0].PublicIpAddress')
 
 # Define the config template
 read -r -d '' SSH_CONFIG << EOM
@@ -471,7 +480,7 @@ Host mlops-zoomcamp                         # ssh connection calling name
     User ubuntu                             # username AWS EC2
     HostName $NEW_IP                        # Public IP, it changes when Source EC2 is turned off.
     IdentityFile ~/.ssh/mlops-zoomcamp.pem  # Private SSH key file path
-    LocalForward 8888 localhost:8888        # Connecting to a service on an internal network from the outside, static forward or set port user forward via on vscode
+    LocalForward 8888 localhost:8888        # Connecting to a service on an internal network from the outside, static f>
     StrictHostKeyChecking no
 EOM
 
