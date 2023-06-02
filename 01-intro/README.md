@@ -351,8 +351,8 @@ jupyter notebook
 !conda update --all
 ```
 ```sh 
-# check and repair packages conflict
-!conda update --all
+# remove unused packages and clear cache
+!conda clean --all
 ```
 
 ## 1.3 (Optional) Training a ride duration prediction model
