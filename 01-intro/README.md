@@ -83,11 +83,11 @@ ls -al
 
 ```sh
 # Create local .ssh folder in HOME folder
-mkdir -p .ssh
+mkdir -p ~/.ssh
 ```
 ```sh  
 # Go to local .ssh folder
-cd .ssh/
+cd ~/.ssh/
 ```
 ```sh  
 # Copy local *.pem key to in .ssh folder
@@ -234,7 +234,7 @@ ssh mlops-zoomcamp
 ### Step 2: Update existing packages
 
 ```sh
-sudo apt update
+sudo apt update -y && sudo apt upgrade -y
 ```
 
 
