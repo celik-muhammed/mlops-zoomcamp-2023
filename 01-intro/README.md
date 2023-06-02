@@ -20,6 +20,7 @@ for setting up your local environment.
   <img src="images/thumbnail-1-02.jpg">
 </a>
 
+
 ## MLOPS conda Environment Preparation Cloud or Local
 
 **Note**: You don't have to rent an instance in the cloud. Skip the Cloud Steps go to Environment Steps, then You can follow the same instructions 
@@ -27,6 +28,7 @@ for setting up your local environment. `Recommended development environment: Mac
 
 
 ## Cloud Steps:
+
 
 ### Cloud Step 1: Create an AWS Account for EC2 Instance.
 - https://portal.aws.amazon.com/billing/signup#/start/email
@@ -143,12 +145,61 @@ whoami
 logout
 ```
 
+
+
 ## Environment Steps:   
 
 - https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#2-install-wsl
 - [Setting up WSL for a Seamless Data Science Workflow on Windows](https://www.youtube.com/watch?v=IWfsbOzQgXA)
 
-### Step 1: Download and install the Anaconda distribution of Python.
+### Step 1: `Download` and `install` the Anaconda distribution of Python.
+
+#### Local WSL on Windows
+
+##### Install WSL: Search for Windows PowerShell in your Windows search bar, then select Run as administrator.
+
+```sh 
+# Setup WSL
+wsl --install
+```
+```sh
+# Update WSL
+wsl --update
+```
+```sh 
+# Check Available WSL Distros
+wsl --list --online
+```
+```sh 
+# Download Ubuntu
+wsl --install -d ubuntu
+```
+```sh 
+# Check State and Version
+wsl -l -v
+```
+```sh
+# if ubuntu version 1 set 2 
+wsl --set-version ubuntu 2
+```
+```sh 
+# Set Defaulth WLS Ubuntu
+wsl --setdefault ubuntu
+```
+```sh 
+# List Installed WSL Distros
+wsl --list --all
+```
+```sh 
+# Restart or Reconnect All Distros WSL
+wsl.exe --shutdown
+```
+```sh 
+# Remove or Delete Ubuntu
+wsl --unregister ubuntu
+```
+
+#### Open Terminal `Local Mac, Linux, WSL on Windows` or `Connect Cloud Aws EC2 Linux` via SSH as mentioned above
 
 ```sh
 # Download
@@ -163,20 +214,17 @@ bash Anaconda3-2022.05-Linux-x86_64.sh
 logout
 ```
 ```sh 
-# Cloud: connect and check ACTIVE environment conda base on AWS EC2
+# Reopen Terminal or Reconnect Cloud and check ACTIVE environment conda base 
 ssh mlops-zoomcamp
 ```
-```sh 
-# Local: connect and check ACTIVE environment conda base on Mac, Linux: close and reopen mac, linux terminal
-# Local: connect and check ACTIVE environment conda base on WSL on Windows
-wsl
-```
+
 
 ### Step 2: Update existing packages
 
 ```sh
 sudo apt update
 ```
+
 
 ### Step 3: Install Docker
 - https://www.simplilearn.com/tutorials/docker-tutorial
@@ -193,6 +241,7 @@ To run docker without `sudo`:
 sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
+
 
 ### Step 4: Install Docker Compose
 - https://www.simplilearn.com/tutorials/docker-tutorial/docker-compose#GoTop
@@ -233,6 +282,7 @@ Save it and run the following to make sure the changes are applied:
 source ~/.bashrc
 ```
 
+
 ### Step 5: Run Docker
 
 **Note**: If you get `docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/create": dial unix /var/run/docker.sock: connect: permission denied.` error, restart your VM instance. 
@@ -240,6 +290,7 @@ source ~/.bashrc
 ```sh
 docker run hello-world
 ```
+
 
 ### Step 6: Run jupyter notebook
 
@@ -265,6 +316,7 @@ jupyter notebook
 # for WSL - Close Tilix: Terminal 
 # Click to any Link access the notebook on Terminal with Ctrl+
 ```
+
 
 ### Step 7: Open new Notebook with Python Kernel
 
