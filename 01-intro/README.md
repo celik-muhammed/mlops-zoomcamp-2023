@@ -155,6 +155,7 @@ logout
 
 - https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#2-install-wsl
 - [Setting up WSL for a Seamless Data Science Workflow on Windows](https://www.youtube.com/watch?v=IWfsbOzQgXA)
+- [enabling gpu acceleration on ubuntu on wsl2 on Windows](https://ubuntu.com/tutorials/enabling-gpu-acceleration-on-ubuntu-on-wsl2-with-the-nvidia-cuda-platform#2-install-the-appropriate-windows-vgpu-driver-for-wsl)
 
 ### Step 1: `Download` and `install` the Anaconda distribution of Python.
 
