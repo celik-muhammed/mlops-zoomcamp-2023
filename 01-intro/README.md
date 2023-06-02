@@ -187,6 +187,14 @@ wsl --set-version ubuntu 2
 wsl --setdefault ubuntu
 ```
 ```sh 
+# Connect WLS Ubuntu
+wsl
+```
+```sh 
+# Exit WSL
+logout
+```
+```sh 
 # List Installed WSL Distros
 wsl --list --all
 ```
