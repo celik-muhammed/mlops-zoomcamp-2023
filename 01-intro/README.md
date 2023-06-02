@@ -489,3 +489,8 @@ chmod +x ~/.ssh/update_ssh_config.sh
 # Run the script update: AWS EC2 IP Adress
 ~/.ssh/update_ssh_config.sh
 ```
+
+```sh  
+# Connect EC2 Instance Updated IP SSH Config
+ssh mlops-zoomcamp
+```
