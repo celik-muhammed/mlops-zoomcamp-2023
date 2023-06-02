@@ -110,6 +110,10 @@ nautilus .
 **Note**: If you get `It is required that your private key files are NOT accessible by others. This private key will be ignored.` error, you should change permits on the downloaded file to protect your private key:
 
 ```sh 
+# giving permission to a specific user
+sudo chown -R username: ~/.ssh/name-of-your-private-key-file.pem
+```
+```sh 
 # for local ssh pem key permission error
 chmod 400 ~/.ssh/name-of-your-private-key-file.pem
 ```
