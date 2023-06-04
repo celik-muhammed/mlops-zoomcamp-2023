@@ -45,7 +45,7 @@ Our MLOps Zoomcamp course
 * Why do we need MLOps
 * Course overview
 * Environment preparation
-* [Submitted Homework](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/01-intro/Ride-Duration-Prediction-using-Regression-Analysis.ipynb)
+* [Submitted Homework 1](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/01-intro/Ride-Duration-Prediction-using-Regression-Analysis.ipynb)
 
 [More details](01-intro)
 
@@ -57,7 +57,7 @@ Our MLOps Zoomcamp course
 * Saving and loading models with MLflow
 * Model registry
 * MLflow in practice
-* [Submitted Homework](https://github.com/celik-muhammed/mlops-zoomcamp-2023/tree/master/cohorts/2023/02-experiment-tracking)
+* [Submitted Homework 2](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/02-experiment-tracking/Mlflow-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
 
 [More details](02-experiment-tracking)
 
