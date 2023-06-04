@@ -1,0 +1,14 @@
+
+# To get started with MLflow you'll need to install the appropriate Python package.
+pandas==2.0.2
+fastparquet==2023.4.0
+# pyarrow==11.0.0
+seaborn==0.12.2
+scikit-learn==1.2.2
+xgboost==1.7.5
+hyperopt==0.2.7
+
+jupyter==1.0.0
+mlflow==2.3.2
+boto3==1.26.144
+setuptools==67.7.2
