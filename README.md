@@ -61,7 +61,6 @@ Our MLOps Zoomcamp course
 
 [More details](02-experiment-tracking)
 
-<!-- 
 ### [Module 3: Orchestration and ML Pipelines](03-orchestration)
 
 * Workflow orchestration
@@ -71,6 +70,16 @@ Our MLOps Zoomcamp course
 * Homework
 
 [More details](03-orchestration)
+
+
+
+
+
+
+
+
+
+
 
 
 ### [Module 4: Model Deployment](04-deployment)
@@ -98,7 +107,7 @@ Our MLOps Zoomcamp course
 * Testing: unit, integration
 * Python: linting and formatting
 * Pre-commit hooks and makefiles
-* CI/CD (Github Actions)
+* CI/CD (GitHub Actions)
 * Infrastructure as code (Terraform)
 * Homework
 
@@ -184,4 +193,4 @@ Thanks to the course sponsors for making it possible to create this course
   <a href="https://wandb.ai/">
     <img height="100" src="https://datatalks.club/images/partners/wandb-abb.svg">
   </a>
-</p> -->
+</p>
