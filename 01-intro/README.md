@@ -362,9 +362,15 @@ jupyter notebook
 # or 500+ mb
 !pip install tensorflow --no-cache-dir
 ```
+**if packages conflict**
 ```sh 
 # check and repair packages conflict
 !conda update --all
+```
+**if The environment is inconsistent**
+```sh 
+# if The environment is inconsistent
+!conda update -n base -c defaults conda --force-reinstall
 ```
 ```sh 
 # Attention!, remove unused packages and clear cache, can be remove spme Useful packegec need to install them
