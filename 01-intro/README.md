@@ -10,6 +10,14 @@ Source: https://github.com/DataTalksClub/mlops-zoomcamp
   <img src="images/thumbnail-1-01.jpg">
 </a>
 
+**Bash multi Command CheatSheet:**
+```sh
+"A &"               # Run A in background.
+"A ; B"             # Run A and then B, regardless of success of A
+"A & B"             # Run A in background and then B, regardless of success of A
+"A && B"            # Run B if A succeeded
+"A || B"            # Run B if A failed
+```
 
 ## 1.2 Environment preparation
 
@@ -157,11 +165,9 @@ logout
 - [Setting up WSL for a Seamless Data Science Workflow on Windows](https://www.youtube.com/watch?v=IWfsbOzQgXA)
 - [enabling gpu acceleration on ubuntu on wsl2 on Windows](https://ubuntu.com/tutorials/enabling-gpu-acceleration-on-ubuntu-on-wsl2-with-the-nvidia-cuda-platform#2-install-the-appropriate-windows-vgpu-driver-for-wsl)
 
-### Step 1: `Download` and `install` the Anaconda distribution of Python.
+### WSL for Windows (Local)
 
-#### Local WSL on Windows
-
-##### Install WSL: Search for Windows PowerShell in your Windows search bar, then select Run as administrator.
+- **Install WSL**: Search for Windows PowerShell in your Windows search bar, then select Run as administrator.
 
 ```sh 
 # Setup WSL
@@ -171,6 +177,7 @@ wsl --install
 # Update WSL
 wsl --update
 ```
+- **Download Ubuntu(WLS) on Windows**
 ```sh 
 # Check Available WSL Distros
 wsl --list --online
@@ -178,6 +185,10 @@ wsl --list --online
 ```sh 
 # Download Ubuntu
 wsl --install -d ubuntu
+```
+```sh 
+# List Installed WSL Distros
+wsl --list --all
 ```
 ```sh 
 # Check State and Version
@@ -191,8 +202,9 @@ wsl --set-version ubuntu 2
 # Set Defaulth WLS Ubuntu
 wsl --setdefault ubuntu
 ```
+- **Connect Ubuntu(WLS) on Windows**
 ```sh 
-# Connect WLS Ubuntu
+# Connect WSL Ubuntu
 wsl
 ```
 ```sh 
@@ -200,26 +212,26 @@ wsl
 logout
 ```
 ```sh 
-# List Installed WSL Distros
-wsl --list --all
-```
-```sh 
 # Restart or Reconnect All Distros WSL
 wsl.exe --shutdown
 ```
+- **Remove Ubuntu(WLS) on Windows**
 ```sh 
 # Remove or Delete Ubuntu
 wsl --unregister ubuntu
 ```
 
-#### Open Terminal `Local Mac, Linux, WSL on Windows` or `Connect Cloud Aws EC2 Linux` via SSH as mentioned above
+### Step 1: Anaconda Distribution `Download` and `Install`.
+- https://www.anaconda.com/download#downloads
+
+Open Terminal `Local Mac, Linux, WSL on Windows` or `Connect Cloud Aws EC2 Linux` via SSH as mentioned above
 
 ```sh
-# Download
+# Download Anaconda via wget or curl
 wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
 ```
 ```sh 
-# Setup - Attention make sure after installing type yes for AUTO connect conda enviroment 
+# Setup - Attention make sure after installing type "yes" for AUTO connect conda enviroment 
 bash Anaconda3-2022.05-Linux-x86_64.sh
 ```
 ```sh 
@@ -243,6 +255,9 @@ sudo apt update -y
 - https://www.simplilearn.com/tutorials/docker-tutorial
 - https://www.simplilearn.com/tutorials/docker-tutorial/how-to-install-docker-on-ubuntu
 - https://docs.docker.com/engine/install/linux-postinstall/
+
+**Note**: You directly download the Docker desktop from official site and toggle a key in the docker desktop app to start using Docker in WSL.
+- https://docs.docker.com/desktop/windows/wsl/
 
 ```sh
 sudo apt install docker.io
