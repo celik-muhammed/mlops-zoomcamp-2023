@@ -67,7 +67,7 @@ Our MLOps Zoomcamp course
 * Prefect 2.0
 * Turning a notebook into a pipeline
 * Deployment of Prefect flow
-* [Submitted Homework 2](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/03-orchestration/Prefect-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
+* [Submitted Homework 3](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/03-orchestration/Prefect-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
 
 [More details](03-orchestration)
 
