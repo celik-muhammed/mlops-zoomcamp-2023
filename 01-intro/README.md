@@ -177,7 +177,7 @@ wsl --install
 # Update WSL
 wsl --update
 ```
-- **Download Ubuntu(WLS) on Windows**
+- **Download Ubuntu(WSL) on Windows**
 ```sh 
 # Check Available WSL Distros
 wsl --list --online
@@ -199,10 +199,10 @@ wsl -l -v
 wsl --set-version ubuntu 2
 ```
 ```sh 
-# Set Defaulth WLS Ubuntu
+# Set Defaulth WSL Ubuntu
 wsl --setdefault ubuntu
 ```
-- **Connect Ubuntu(WLS) on Windows**
+- **Connect Ubuntu(WSL) on Windows**
 ```sh 
 # Connect WSL Ubuntu
 wsl
@@ -215,7 +215,7 @@ logout
 # Restart or Reconnect All Distros WSL
 wsl.exe --shutdown
 ```
-- **Remove Ubuntu(WLS) on Windows**
+- **Remove Ubuntu(WSL) on Windows**
 ```sh 
 # Remove or Delete Ubuntu
 wsl --unregister ubuntu
@@ -356,26 +356,48 @@ jupyter notebook
 # Python path check
 !which python
 ```
+
+### Step 8: Setup GPU nvidia-cuda
+
+- https://www.tensorflow.org/install/pip#windows-wsl2_1
+```sh
+sudo apt update -y
+```
+```sh
+sudo apt install nvidia-cuda-toolkit
+```
+```sh 
+nvcc --version
+```
+```sh 
+nvidia-smi
+```
 ```sh 
 # EC2 install Tensorflow 200+ mb
-!pip install tensorflow-cpu
+pip install tensorflow-cpu
+
 # or 500+ mb
-!pip install tensorflow --no-cache-dir
+pip install tensorflow --no-cache-dir
+```
+```sh 
+# for model flow chart
+apt install graphviz
+pip install graphviz
 ```
 **if packages conflict**
 ```sh 
 # check and repair packages conflict
-!conda update --all
+conda update --all
 ```
 **if The environment is inconsistent**
 ```sh 
 # if The environment is inconsistent
-!conda update -n base -c defaults conda --force-reinstall
+conda update -n base -c defaults conda --force-reinstall
 ```
 ```sh 
 # Attention!, remove unused packages and clear cache, can be remove spme Useful packegec need to install them
-!conda clean --all
-!conda install protobuf   # example
+conda clean --all
+conda install protobuf   # example
 ```
 
 ## 1.3 (Optional) Training a ride duration prediction model
