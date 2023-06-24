@@ -375,19 +375,10 @@ jupyter notebook
 ```sh
 sudo apt update -y
 ```
-```sh
-sudo apt install nvidia-cuda-toolkit
-```
-```sh
-sudo apt install nvidia-cudnn
-```
-```sh 
-nvcc --version
-```
 ```sh 
 nvidia-smi
 ```
-- **Continue**: https://www.tensorflow.org/install/pip#windows-wsl2_1
+- **Continue for GPU**: https://www.tensorflow.org/install/pip#windows-wsl2_1
 ```sh 
 # EC2 install Tensorflow 200+ mb
 pip install tensorflow-cpu
@@ -396,7 +387,7 @@ pip install tensorflow-cpu
 pip install tensorflow --no-cache-dir
 ```
 ```sh 
-# for model flow chart
+# for some model flow chart
 apt install graphviz
 pip install graphviz
 ```
@@ -414,6 +405,16 @@ conda update -n base -c defaults conda --force-reinstall
 # Attention!, remove unused packages and clear cache, can be remove spme Useful packegec need to install them
 conda clean --all
 conda install protobuf   # example
+```
+**if Required but mostly not**
+```sh
+sudo apt install nvidia-cuda-toolkit
+```
+```sh
+sudo apt install nvidia-cudnn
+```
+```sh 
+nvcc --version
 ```
 
 ## 1.3 (Optional) Training a ride duration prediction model
