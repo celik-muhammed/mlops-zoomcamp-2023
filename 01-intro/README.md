@@ -241,11 +241,11 @@ Open Terminal `Local Mac, Linux, WSL on Windows` or `Connect Cloud Aws EC2 Linux
 
 ```sh
 # Download Anaconda via wget or curl
-wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
+wget https://repo.anaconda.com/archive/Anaconda3-2023.03-1-Linux-x86_64.sh
 ```
 ```sh 
 # Setup - Attention make sure after installing type "yes" for AUTO connect conda enviroment 
-bash Anaconda3-2022.05-Linux-x86_64.sh
+bash Anaconda3-2023.03-1-Linux-x86_64.sh
 ```
 ```sh 
 # exit AWS EC2 or mac, linux, WSL on Windows
