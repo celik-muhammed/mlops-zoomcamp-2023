@@ -359,15 +359,14 @@ jupyter notebook
 
 ### Step 8: Setup GPU nvidia-cuda
 
-- https://www.tensorflow.org/install/pip#windows-wsl2_1
 ```sh
 sudo apt update -y
 ```
 ```sh
-sudo apt install nvidia-cudnn
+sudo apt install nvidia-cuda-toolkit
 ```
 ```sh
-sudo apt install nvidia-cuda-toolkit
+sudo apt install nvidia-cudnn
 ```
 ```sh 
 nvcc --version
@@ -375,6 +374,7 @@ nvcc --version
 ```sh 
 nvidia-smi
 ```
+- **Continue**: https://www.tensorflow.org/install/pip#windows-wsl2_1
 ```sh 
 # EC2 install Tensorflow 200+ mb
 pip install tensorflow-cpu
