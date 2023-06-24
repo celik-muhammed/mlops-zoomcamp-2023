@@ -161,6 +161,8 @@ logout
 
 ## Environment Steps:   
 
+- https://learn.microsoft.com/tr-tr/windows/wsl/install
+- https://learn.microsoft.com/tr-tr/windows/wsl/basic-commands
 - https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#2-install-wsl
 - [Setting up WSL for a Seamless Data Science Workflow on Windows](https://www.youtube.com/watch?v=IWfsbOzQgXA)
 - [enabling gpu acceleration on ubuntu on wsl2 on Windows](https://ubuntu.com/tutorials/enabling-gpu-acceleration-on-ubuntu-on-wsl2-with-the-nvidia-cuda-platform#2-install-the-appropriate-windows-vgpu-driver-for-wsl)
@@ -170,14 +172,19 @@ logout
 - **Install WSL**: Search for Windows PowerShell in your Windows search bar, then select Run as administrator.
 
 ```sh 
-# Setup WSL
+# Setup WSL defaulth Ubuntu(WSL)
 wsl --install
+```
+- [**if some error linux-kernel-update-package Ubuntu(WSL) on Windows**](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
+```sh
+# Check WSL version
+wsl --version
 ```
 ```sh
 # Update WSL
 wsl --update
 ```
-- **Download Ubuntu(WSL) on Windows**
+- **Download Spesific Linux(WSL) on Windows**
 ```sh 
 # Check Available WSL Distros
 wsl --list --online
@@ -186,6 +193,20 @@ wsl --list --online
 # Download Ubuntu
 wsl --install -d ubuntu
 ```
+```sh 
+# Set Defaulth WSL Ubuntu
+wsl --setdefault ubuntu
+```
+- **Update existing local packages Ubuntu(WSL) on Windows**
+```sh
+# Update Ubuntu existing local packages
+sudo apt update -y && sudo apt upgrade -y
+```
+```sh 
+# Exit WSL
+logout
+```
+- **Check State and Version Ubuntu(WSL) on Windows**
 ```sh 
 # List Installed WSL Distros
 wsl --list --all
@@ -198,18 +219,10 @@ wsl -l -v
 # if ubuntu version 1 set 2 
 wsl --set-version ubuntu 2
 ```
-```sh 
-# Set Defaulth WSL Ubuntu
-wsl --setdefault ubuntu
-```
 - **Connect Ubuntu(WSL) on Windows**
 ```sh 
 # Connect WSL Ubuntu
 wsl
-```
-```sh 
-# Exit WSL
-logout
 ```
 ```sh 
 # Restart or Reconnect All Distros WSL
