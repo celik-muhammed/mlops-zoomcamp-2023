@@ -375,15 +375,11 @@ jupyter notebook
 !which python
 ```
 
-### Step 8: Setup GPU nvidia-cuda
+### Step 8: Setup CPU - GPU nvidia-cuda
 
 ```sh
 sudo apt update -y
 ```
-```sh 
-nvidia-smi
-```
-- **Continue for GPU**: https://www.tensorflow.org/install/pip#windows-wsl2_1
 ```sh 
 # EC2 install Tensorflow 200+ mb
 pip install tensorflow-cpu
@@ -397,15 +393,22 @@ pip install tensorflow --no-cache-dir
 pip install graphviz pydot
 sudo apt install graphviz
 ```
+- **Continue for GPU**: https://www.tensorflow.org/install/pip#windows-wsl2_1
+```sh 
+nvidia-smi
+```
+```sh
+# conda install -c nvidia cuda-nvcc
+nvcc --version
+```
 **if Required but mostly not**
+
+**Note**: It's worth noting that when using conda, the CUDA packages are typically sourced from the Anaconda repository and might not always have the latest version available. If you require the latest CUDA version, using apt or manually downloading and installing CUDA from the official NVIDIA website might be necessary.
 ```sh
 sudo apt install nvidia-cuda-toolkit
 ```
 ```sh
 sudo apt install nvidia-cudnn
-```
-```sh 
-nvcc --version
 ```
 
 
