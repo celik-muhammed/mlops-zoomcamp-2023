@@ -350,7 +350,12 @@ cd /mnt/c/Users/your-windows-username
 mkdir -p jupyter_notebook && cd jupyter_notebook
 ```
 ```sh 
-# run jupyter notebook
+# new conda virtual environment
+conda create --name tf_py310 python=3.10 jupyter
+conda activate tf_py310
+```
+```sh 
+# run jupyter notebook, work on `venv` tf_py310 or base
 jupyter notebook
 ```
 ```sh 
@@ -388,9 +393,24 @@ pip install tensorflow --no-cache-dir
 ```
 ```sh 
 # for some model flow chart
-apt install graphviz
-pip install graphviz
+# conda install -c anaconda graphviz pydot
+pip install graphviz pydot
+sudo apt install graphviz
 ```
+**if Required but mostly not**
+```sh
+sudo apt install nvidia-cuda-toolkit
+```
+```sh
+sudo apt install nvidia-cudnn
+```
+```sh 
+nvcc --version
+```
+
+
+### Step 9: Conda conflict, inconsistent or Update
+
 **if packages conflict**
 ```sh 
 # check and repair packages conflict
@@ -405,16 +425,6 @@ conda update -n base -c defaults conda --force-reinstall
 # Attention!, remove unused packages and clear cache, can be remove spme Useful packegec need to install them
 conda clean --all
 conda install protobuf   # example
-```
-**if Required but mostly not**
-```sh
-sudo apt install nvidia-cuda-toolkit
-```
-```sh
-sudo apt install nvidia-cudnn
-```
-```sh 
-nvcc --version
 ```
 
 ## 1.3 (Optional) Training a ride duration prediction model
