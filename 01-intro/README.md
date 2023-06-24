@@ -364,6 +364,9 @@ jupyter notebook
 sudo apt update -y
 ```
 ```sh
+sudo apt install nvidia-cudnn
+```
+```sh
 sudo apt install nvidia-cuda-toolkit
 ```
 ```sh 
