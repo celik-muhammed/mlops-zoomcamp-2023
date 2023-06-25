@@ -208,16 +208,16 @@ logout
 ```
 - **Check State and Version Ubuntu(WSL) on Windows**
 ```sh 
-# List Installed WSL Distros
-wsl --list --all
-```
-```sh 
 # Check State and Version
 wsl -l -v
 ```
 ```sh
 # if ubuntu version 1 set 2 
 wsl --set-version ubuntu 2
+```
+```sh 
+# List Installed WSL Distros
+wsl --list --all
 ```
 - **Connect Ubuntu(WSL) on Windows**
 ```sh 
@@ -374,23 +374,12 @@ jupyter notebook
 # Python path check
 !which python
 ```
-
-### Step 8: Setup CPU - GPU nvidia-cuda
-
 ```sh
 sudo apt update -y
 ```
-**cuda Downloads**
 
-- https://developer.nvidia.com/cuda-downloads?target_os=Linux
-- https://lebaohiep.com/shaare/wEd-8g
-```sh
-# Download CUDA Installer for Linux WSL-Ubuntu 2.0 x86_64
-wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.0-1_all.deb
-sudo dpkg -i cuda-keyring_1.0-1_all.deb
-sudo apt-get update
-sudo apt-get -y install cuda
-```
+
+### Step 8: Setup tensorflow on CPU
 ```sh 
 # EC2 install Tensorflow 200+ mb
 pip install tensorflow-cpu
@@ -405,7 +394,44 @@ conda install -c anaconda graphviz pydot
 sudo apt install graphviz
 ```
 
-- **Continue for GPU**: https://www.tensorflow.org/install/pip#windows-wsl2_1
+### Step 9: Conda conflict, inconsistent or Update
+```sh 
+# Attention!, remove unused packages and clear cache, can be remove spme Useful packegec need to install them
+conda clean --all
+```
+```sh 
+# collection of pre-installed packages and tools
+conda install anaconda --force-reinstall
+```
+
+**if The environment is inconsistent**
+```sh 
+# used to update or install Conda itself
+conda update -n base -c defaults conda --force-reinstall
+```
+
+**if packages conflict**
+```sh 
+# check and repair packages conflict
+conda update --all --force-reinstall
+```
+
+
+### Step: Setup GPU nvidia-cuda - _NOT RECOMMENDED_
+**WSL cuda Downloads**
+
+- https://developer.nvidia.com/cuda-downloads?target_os=Linux
+- https://lebaohiep.com/shaare/wEd-8g
+
+```sh
+# Download CUDA Installer for Linux WSL-Ubuntu 2.0 x86_64
+wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.0-1_all.deb
+sudo dpkg -i cuda-keyring_1.0-1_all.deb
+sudo apt-get update
+sudo apt-get -y install cuda
+```
+
+- **Continue for WSL**: https://www.tensorflow.org/install/pip#windows-wsl2_1
 ```sh 
 nvidia-smi
 ```
@@ -447,24 +473,6 @@ sudo apt install nvidia-cuda-toolkit
 sudo apt install nvidia-cudnn
 ```
 
-
-### Step 9: Conda conflict, inconsistent or Update
-
-**if packages conflict**
-```sh 
-# check and repair packages conflict
-conda update --all
-```
-**if The environment is inconsistent**
-```sh 
-# if The environment is inconsistent
-conda update -n base -c defaults conda --force-reinstall
-```
-```sh 
-# Attention!, remove unused packages and clear cache, can be remove spme Useful packegec need to install them
-conda clean --all
-conda install protobuf   # example
-```
 
 ## 1.3 (Optional) Training a ride duration prediction model
 
