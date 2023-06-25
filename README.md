@@ -1,5 +1,7 @@
 # mlops-zoomcamp-2023
 
+## [Go to: MLOPS Environment Preparation](./01-intro/README.md)
+
 <p align="center">  
   <a href="https://airtable.com/shrCb8y6eTbPKwSTL" target="_blank">
     <img src="https://github.com/celik-muhammed/mlops-zoomcamp/blob/main/images/banner.png?raw=true" height="200"></a>
@@ -35,8 +37,6 @@ Our MLOps Zoomcamp course
 
 
 ## Syllabus
-
-#### [Go to: MLOPS Environment Preparation](./01-intro/README.md)
 
 ### [Module 1: Introduction](01-intro)
 * What is MLOps
