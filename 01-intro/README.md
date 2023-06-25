@@ -380,6 +380,15 @@ jupyter notebook
 ```sh
 sudo apt update -y
 ```
+**cuda Downloads**
+- https://developer.nvidia.com/cuda-downloads?target_os=Linux
+```sh
+# Download Installer for Linux WSL-Ubuntu 2.0 x86_64
+wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.0-1_all.deb
+sudo dpkg -i cuda-keyring_1.0-1_all.deb
+sudo apt-get update
+sudo apt-get -y install cuda
+```
 ```sh 
 # EC2 install Tensorflow 200+ mb
 pip install tensorflow-cpu
@@ -401,9 +410,12 @@ nvidia-smi
 # conda install -c nvidia cuda-nvcc
 nvcc --version
 ```
-**if Required but mostly not**
+**if Required but mostly not, GLOBAL setup**
 
-**Note**: It's worth noting that when using conda, the CUDA packages are typically sourced from the Anaconda repository and might not always have the latest version available. If you require the latest CUDA version, using apt or manually downloading and installing CUDA from the official NVIDIA website might be necessary.
+**Note**: It's worth noting that when **using conda**, the CUDA packages are typically sourced from the **Anaconda repository** and might not always have the latest version available. If you require the **latest CUDA version**, using **apt or manually** downloading and installing CUDA from the official NVIDIA website might be necessary.
+
+- https://www.pugetsystems.com/labs/hpc/how-to-install-tensorflow-with-gpu-support-on-windows-10-without-installing-cuda-updated-1419/
+- https://docs.nvidia.com/cuda/wsl-user-guide/index.html
 ```sh
 sudo apt install nvidia-cuda-toolkit
 ```
