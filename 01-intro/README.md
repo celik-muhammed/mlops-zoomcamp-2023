@@ -383,7 +383,7 @@ sudo apt update -y
 **cuda Downloads**
 - https://developer.nvidia.com/cuda-downloads?target_os=Linux
 ```sh
-# Download Installer for Linux WSL-Ubuntu 2.0 x86_64
+# Download CUDA Installer for Linux WSL-Ubuntu 2.0 x86_64
 wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.0-1_all.deb
 sudo dpkg -i cuda-keyring_1.0-1_all.deb
 sudo apt-get update
@@ -407,7 +407,7 @@ sudo apt install graphviz
 nvidia-smi
 ```
 ```sh
-# conda install -c nvidia cuda-nvcc
+# conda install -c nvidia cuda-nvcc=11.3.58
 nvcc --version
 ```
 **if Required but mostly not, GLOBAL setup**
@@ -421,6 +421,25 @@ sudo apt install nvidia-cuda-toolkit
 ```
 ```sh
 sudo apt install nvidia-cudnn
+```
+
+**For Ubuntu(WSL)**
+
+- [WSL2 Installation Failing Miserably](https://discuss.tensorflow.org/t/wsl2-installation-failing-miserably/16236/6)
+
+```sh 
+conda install -c nvidia cuda-nvcc=11.3.58
+
+# Configure the XLA cuda directory
+mkdir -p $CONDA_PREFIX/etc/conda/activate.d
+printf 'export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CONDA_PREFIX/lib/\n' >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+source $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+
+# Copy libdevice file to the required path
+mkdir -p $CONDA_PREFIX/lib/nvvm/libdevice
+cp $CONDA_PREFIX/lib/libdevice.10.bc $CONDA_PREFIX/lib/nvvm/libdevice/
+
+# this is what worked for me but I used python 3.9, tensorflow 2.12, CUDA 11.8 and cuDNN 8.6.0
 ```
 
 
@@ -520,6 +539,7 @@ Did you take notes? Add them here:
 - https://linuxhint.com/install_aws_cli_ubuntu/
 
 ```sh
+cd 
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 sudo apt install unzip -y
 unzip awscliv2.zip
