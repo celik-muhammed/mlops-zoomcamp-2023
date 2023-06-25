@@ -381,7 +381,9 @@ jupyter notebook
 sudo apt update -y
 ```
 **cuda Downloads**
+
 - https://developer.nvidia.com/cuda-downloads?target_os=Linux
+- https://lebaohiep.com/shaare/wEd-8g
 ```sh
 # Download CUDA Installer for Linux WSL-Ubuntu 2.0 x86_64
 wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.0-1_all.deb
@@ -398,10 +400,11 @@ pip install tensorflow --no-cache-dir
 ```
 ```sh 
 # for some model flow chart
-# conda install -c anaconda graphviz pydot
-pip install graphviz pydot
+# pip install graphviz pydot
+conda install -c anaconda graphviz pydot
 sudo apt install graphviz
 ```
+
 - **Continue for GPU**: https://www.tensorflow.org/install/pip#windows-wsl2_1
 ```sh 
 nvidia-smi
@@ -410,22 +413,11 @@ nvidia-smi
 # conda install -c nvidia cuda-nvcc=11.3.58
 nvcc --version
 ```
-**if Required but mostly not, GLOBAL setup**
-
-**Note**: It's worth noting that when **using conda**, the CUDA packages are typically sourced from the **Anaconda repository** and might not always have the latest version available. If you require the **latest CUDA version**, using **apt or manually** downloading and installing CUDA from the official NVIDIA website might be necessary.
-
-- https://www.pugetsystems.com/labs/hpc/how-to-install-tensorflow-with-gpu-support-on-windows-10-without-installing-cuda-updated-1419/
-- https://docs.nvidia.com/cuda/wsl-user-guide/index.html
-```sh
-sudo apt install nvidia-cuda-toolkit
-```
-```sh
-sudo apt install nvidia-cudnn
-```
 
 **For Ubuntu(WSL)**
 
 - [WSL2 Installation Failing Miserably](https://discuss.tensorflow.org/t/wsl2-installation-failing-miserably/16236/6)
+- [Tensorflow/Pytorch with CUDA on WSL](https://lebaohiep.com/shaare/wEd-8g)
 
 ```sh 
 conda install -c nvidia cuda-nvcc=11.3.58
@@ -440,6 +432,19 @@ mkdir -p $CONDA_PREFIX/lib/nvvm/libdevice
 cp $CONDA_PREFIX/lib/libdevice.10.bc $CONDA_PREFIX/lib/nvvm/libdevice/
 
 # this is what worked for me but I used python 3.9, tensorflow 2.12, CUDA 11.8 and cuDNN 8.6.0
+```
+
+**if Required but mostly not, GLOBAL setup**
+
+**Note**: It's worth noting that when **using conda**, the CUDA packages are typically sourced from the **Anaconda repository** and might not always have the latest version available. If you require the **latest CUDA version**, using **apt or manually** downloading and installing CUDA from the official NVIDIA website might be necessary.
+
+- https://www.pugetsystems.com/labs/hpc/how-to-install-tensorflow-with-gpu-support-on-windows-10-without-installing-cuda-updated-1419/
+- https://docs.nvidia.com/cuda/wsl-user-guide/index.html
+```sh
+sudo apt install nvidia-cuda-toolkit
+```
+```sh
+sudo apt install nvidia-cudnn
 ```
 
 
