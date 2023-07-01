@@ -1,6 +1,8 @@
-# mlops-zoomcamp-2023
+<div align="right">
+  <h3><a href='./01-intro/README.md'>Go to: MLOPS Environment Preparation</a></h3>
+</div>
 
-## [Go to: MLOPS Environment Preparation](./01-intro/README.md)
+# mlops-zoomcamp-2023
 
 <p align="center">  
   <a href="https://airtable.com/shrCb8y6eTbPKwSTL" target="_blank">
