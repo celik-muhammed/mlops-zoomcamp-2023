@@ -4,6 +4,7 @@
 import os
 import click
 import pickle
+
 import pathlib
 import argparse
 import requests
@@ -53,6 +54,16 @@ def fetch_data(raw_data_path: str, year: int, month: int, color: str) -> None:
     with open(filename, "wb") as f:
         f.write(response.content)
     return None
+
+
+@flow(name="Subflow Download Data", log_prints=True)
+def download_data(raw_data_path: str, years: list, months: list, colors: list) -> None:
+    # Download the data from the NYC Taxi dataset
+    for year in years:
+        for month in months:
+            for color in colors:
+                fetch_data(raw_data_path, year, month, color)
+    return None
     
     
 @task(name="Read Taxi Data", retries=3, retry_delay_seconds=2, log_prints=None)
@@ -74,41 +85,41 @@ def read_data(filename: str) -> pd.DataFrame:
     return df
 
 
-@task(name="Add Features Taxi Data", log_prints=True)
-def add_features(
-    df_train: pd.DataFrame, df_val: pd.DataFrame, df_test: pd.DataFrame
+@task(name="Preprocess: Add Features Taxi Data", log_prints=True)
+def preprocess(
+    df: pd.DataFrame,dv: DictVectorizer = None, fit_dv: bool = False
 ) -> tuple(
     [
         scipy.sparse._csr.csr_matrix,
-        scipy.sparse._csr.csr_matrix,
-        np.ndarray,
         np.ndarray,
         sklearn.feature_extraction.DictVectorizer,
     ]
 ):
     """Add features to the model"""
-    df_train["PU_DO"] = df_train["PULocationID"] + "_" + df_train["DOLocationID"]
-    df_val["PU_DO"]   = df_val["PULocationID"]   + "_" + df_val["DOLocationID"]
-    df_test["PU_DO"]  = df_test["PULocationID"]  + "_" + df_test["DOLocationID"]
+    df['PU_DO'] = df['PULocationID'] + '_' + df['DOLocationID']
+    categorical = ["PU_DO"]
+    numerical   = ['trip_distance']
+    dicts       = df[categorical + numerical].to_dict(orient='records')
 
-    categorical = ["PU_DO"]  #'PULocationID', 'DOLocationID']
-    numerical   = ["trip_distance"]
+    if fit_dv:
+        # return sparse matrix
+        dv = DictVectorizer()
+        X = dv.fit_transform(dicts)
+    else:
+        X = dv.transform(dicts)
+        
+    # Convert X the sparse matrix  to pandas DataFrame, but too slow
+    # X = pd.DataFrame(X.toarray(), columns=dv.get_feature_names_out())
+    # X = pd.DataFrame.sparse.from_spmatrix(X, columns=dv.get_feature_names_out())
 
-    dv = DictVectorizer()
+    try:
+        # Extract the target
+        target = 'duration'
+        y = df[target].values
+    except:
+        pass
 
-    train_dicts = df_train[categorical + numerical].to_dict(orient="records")
-    X_train     = dv.fit_transform(train_dicts)
-    y_train     = df_train["duration"].values
-
-    val_dicts   = df_val[categorical + numerical].to_dict(orient="records")
-    X_val       = dv.transform(val_dicts)
-    y_val       = df_val["duration"].values
-    
-    test_dicts  = df_test[categorical + numerical].to_dict(orient="records")
-    X_test      = dv.transform(test_dicts)
-    y_test      = df_test["duration"].values
-
-    return (X_train, y_train), (X_val, y_val), (X_test, y_test), dv
+    return (X, y), dv
 
 
 @task(name="Train Best Model", log_prints=True)
@@ -118,6 +129,7 @@ def train_best_model(
     y_train  : np.ndarray,
     y_val    : np.ndarray,
     dv       : sklearn.feature_extraction.DictVectorizer,
+    raw_data_path: str,
     dest_path: str,
 ) -> None:
     """train a model with best hyperparams and write everything out"""        
@@ -132,17 +144,17 @@ def train_best_model(
         # Optional: Set some information about Model
         mlflow.set_tag("developer", "muce")
         mlflow.set_tag("algorithm", "Machine Learning")
-        mlflow.set_tag("train-data-path", f'./data/green_tripdata_2023-01.parquet')
-        mlflow.set_tag("valid-data-path", f'./data/green_tripdata_2023-02.parquet')
-        mlflow.set_tag("test-data-path",  f'./data/green_tripdata_2023-03.parquet')
+        mlflow.set_tag("train-data-path", f'{raw_data_path}/green_tripdata_2023-01.parquet')
+        mlflow.set_tag("valid-data-path", f'{raw_data_path}/green_tripdata_2023-02.parquet')
+        mlflow.set_tag("test-data-path",  f'{raw_data_path}/green_tripdata_2023-03.parquet') 
 
         # Set Model params information
         best_params = {
             "learning_rate": 0.09585355369315604,
             "max_depth": 30,
             "min_child_weight": 1.060597050922164,
-#             'objective': 'reg:squarederror',          # deprecated  "reg:linear"
-            'objective': "reg:linear",
+            'objective': 'reg:squarederror',          # deprecated  "reg:linear"
+            # 'objective': "reg:linear",
             "reg_alpha": 0.018060244040060163,
             "reg_lambda": 0.011658731377413597,
             "seed": 42,
@@ -176,7 +188,7 @@ def train_best_model(
             pickle.dump(dv, f_out)
             
         # whole proccess like pickle, saved Model, Optional: Preprocessor or Pipeline
-        mlflow.log_artifact(local_path = local_file, artifact_path="preprocessor")        
+        mlflow.log_artifact(local_path = local_file, artifact_path="preprocessor")      
         
         # print(f"default artifacts URI: '{mlflow.get_artifact_uri()}'")
 
@@ -194,22 +206,12 @@ Duration Prediction
 |:----------|-------:|
 | {date.today()} | {rmse:.2f} |
 """
-
         create_markdown_artifact(
             key="duration-model-report", 
             markdown=markdown__rmse_report,
             description="RMSE for Validation Data Report",
         )
-    return None
-
-
-@flow(name="Subflow Download Data", log_prints=True)
-def download_data(raw_data_path: str, years: list, months: list, colors: list):
-    # Download the data from the NYC Taxi dataset
-    for year in years:
-        for month in months:
-            for color in colors:
-                fetch_data(raw_data_path, year, month, color)
+    return None           
 
 
 # @flow(name="Email Server Crenditals", log_prints=True)
@@ -223,7 +225,7 @@ def download_data(raw_data_path: str, years: list, months: list, colors: list):
 #             msg="This proves email_send_message works!",
 #             email_to=email_address,
 #         )
-                
+
 
 @flow(name="Main Flow")
 def main_flow(raw_data_path="./data", dest_path="./models", years="2023", months="1 2 3 4", colors="green yellow") -> None:
@@ -239,7 +241,7 @@ def main_flow(raw_data_path="./data", dest_path="./models", years="2023", months
     months = [int(month) for month in months.split()]
     colors = colors.split()[:1]
     download_data(raw_data_path, years, months, colors)
-    # print(glob(f'*'))
+    # print(sorted(glob(f'{raw_data_path}/*')))
     
     # # Download the data from AWS S3 Bucket
     # s3_bucket_block = S3Bucket.load("s3-bucket-block")
@@ -247,21 +249,24 @@ def main_flow(raw_data_path="./data", dest_path="./models", years="2023", months
     
     # list parquet files
     # print(sorted(glob(f'{raw_data_path}/green*.parquet')))
-    train_path, val_path, test_path = sorted(glob(f'{raw_data_path}/*.parquet'))[-3::]
+    train_path, val_path, test_path = sorted(glob(f'{raw_data_path}/*.parquet'))[:3:]
 
     # Read parquet files
     df_train = read_data(train_path)
     df_val   = read_data(val_path)
     df_test  = read_data(test_path)
-    # print(df_train.shape, df_val.shape, df_test.shape, )
+    # print(df_train.shape, df_val.shape, df_test.shape, )    
 
-    # Transform
-    (X_train, y_train), (X_val, y_val), (X_test, y_test), dv = add_features(df_train, df_val, df_test)
+    # Fit the DictVectorizer and preprocess data
+    (X_train, y_train), dv = preprocess(df_train, fit_dv=True)
+    (X_val, y_val)    , _  = preprocess(df_val, dv, fit_dv=False)
+    (X_test, y_test)  , _  = preprocess(df_test, dv, fit_dv=False)
 
     # Train
-    train_best_model(X_train, X_val, y_train, y_val, dv, dest_path)
+    train_best_model(X_train, X_val, y_train, y_val, dv, raw_data_path, dest_path)
 
     # example_email_send_message_flow(['@gmail.com'])
+
 
 if __name__ == "__main__":
     main_flow()
