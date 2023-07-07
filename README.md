@@ -80,14 +80,9 @@ Our MLOps Zoomcamp course
 * Web service: model deployment with Flask
 * Streaming: consuming events with AWS Kinesis and Lambda
 * Batch: scoring data offline
-* Homework
+* [Submitted Homework 3](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/04-deployment/Deployment-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
 
 [More details](04-deployment)
-
-
-
-
-
 
 
 ### [Module 5: Model Monitoring](05-monitoring)
@@ -95,6 +90,7 @@ Our MLOps Zoomcamp course
 * Monitoring ML-based services
 * Monitoring web services with Prometheus, Evidently, and Grafana
 * Monitoring batch jobs with Prefect, MongoDB, and Evidently
+* [Submitted Homework 2](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/05-monitoring/Monitoring-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
 
 [More details](05-monitoring)
 
