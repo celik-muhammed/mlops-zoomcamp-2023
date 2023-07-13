@@ -72,6 +72,10 @@ To make discussions in Slack more organized:
 
 ## Syllabus
 
+<div align="right">
+  <h3><a href='./01-intro/Install-Linux-on-Windows-with-WSL.md'>Go to: MLOPS Environment Preparation</a></h3>
+</div>
+
 ### [Module 1: Introduction](01-intro)
 
 * What is MLOps
@@ -80,7 +84,7 @@ To make discussions in Slack more organized:
 * Why do we need MLOps
 * Course overview
 * Environment preparation
-* Homework
+* [Submitted Homework 1](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/01-intro/Ride-Duration-Prediction-using-Regression-Analysis.ipynb)
 
 [More details](01-intro)
 
@@ -92,7 +96,7 @@ To make discussions in Slack more organized:
 * Saving and loading models with MLflow
 * Model registry
 * MLflow in practice
-* Homework
+* [Submitted Homework 2](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/02-experiment-tracking/Mlflow-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
 
 [More details](02-experiment-tracking)
 
@@ -105,7 +109,7 @@ To make discussions in Slack more organized:
 * Prefect 2.0
 * Turning a notebook into a pipeline
 * Deployment of Prefect flow
-* Homework
+* [Submitted Homework 3](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/03-orchestration/Prefect-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
 
 [More details](03-orchestration)
 
@@ -116,7 +120,7 @@ To make discussions in Slack more organized:
 * Web service: model deployment with Flask
 * Streaming: consuming events with AWS Kinesis and Lambda
 * Batch: scoring data offline
-* Homework
+* [Submitted Homework 4](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/04-deployment/Deployment-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
 
 [More details](04-deployment)
 
@@ -126,6 +130,7 @@ To make discussions in Slack more organized:
 * Monitoring ML-based services
 * Monitoring web services with Prometheus, Evidently, and Grafana
 * Monitoring batch jobs with Prefect, MongoDB, and Evidently
+* [Submitted Homework 5](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/05-monitoring/Monitoring-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
 
 [More details](05-monitoring)
 
