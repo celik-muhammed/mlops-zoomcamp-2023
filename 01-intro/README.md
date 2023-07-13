@@ -2,22 +2,13 @@
 
 Instructor: Alexey Grigorev
 
-Source: https://github.com/DataTalksClub/mlops-zoomcamp
-
 ## 1.1 Introduction
 
 <a href="https://www.youtube.com/watch?v=s0uaFZSzwfI&list=PL3MmuxUbc_hIUISrluw_A7wDSmfOhErJK">
   <img src="images/thumbnail-1-01.jpg">
 </a>
 
-**Bash multi Command CheatSheet:**
-```sh
-"A &"               # Run A in background.
-"A ; B"             # Run A and then B, regardless of success of A
-"A & B"             # Run A in background and then B, regardless of success of A
-"A && B"            # Run B if A succeeded
-"A || B"            # Run B if A failed
-```
+
 
 ## 1.2 Environment preparation
 
@@ -29,248 +20,23 @@ for setting up your local environment.
 </a>
 
 
-## MLOPS conda Environment Preparation Cloud or Local
+Code:
 
-**Note**: You don't have to rent an instance in the cloud. Skip the Cloud Steps go to Environment Steps, then You can follow the same instructions 
-for setting up your local environment. `Recommended development environment: Mac, Linux, WSL on Windows`. Another Option: Windows.
+Recommended development environment: Linux
 
-
-## Cloud Steps:
-
-
-### Cloud Step 1: Create an AWS Account for EC2 Instance.
-- https://portal.aws.amazon.com/billing/signup#/start/email
-- https://console.aws.amazon.com/console/home
-- Build EC2 Instance: Ubuntu Linux with free tier configuration
-	- Give Name EC2 Instance: mlops-... 
-	- t2.micro (free tier)
-	- Build or Select SSH Key: *.pem file 
-	- Disk Space: 30 GB (max free tier)
-- Start Created EC2 Instance
-
-#### or Create an Deploifai (on AWS, Azure, or GCP) Account.
-- https://github.com/98sean98/mlops-zoomcamp/blob/main/01-intro/deploifai-server/readme.md
-
-#### or Create an Google Cloud Account.
-- https://cloud.google.com/
-- https://github.com/piyush-an/MLOps-ZoomCamp/blob/main/01-Introduction/infrastructure.md
-
-
-### Cloud Step 2: Connect Amazon Ubuntu EC2 Instance
-
-#### Cloud Step 2.1: Open Local Terminal or GIT Bash on Mac, Linux, WSL on Windows
-
+### Step 1: Download and install the Anaconda distribution of Python
 ```sh
-# For Windows Git Bash to Connect WSL
-wsl
+wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
+bash Anaconda3-2022.05-Linux-x86_64.sh
 ```
-
-#### Cloud Step 2.2: Update existing local packages 
-
-```sh
-# Update existing local packages
-sudo apt update -y && sudo apt upgrade -y
-```
-
-#### Cloud Step 2.3: Check local home folder
-
-```sh
-# Go to local HOME folder
-cd
-```
-```sh  
-# Check local directory is in HOME folder
-pwd
-```
-```sh  
-# Check local HOME folders inside
-ls -al
-```
-
-#### Cloud Step 2.4: Create local .ssh folder, then copy in ssh key *.pem
-
-```sh
-# Create local .ssh folder in HOME folder
-mkdir -p ~/.ssh
-```
-```sh  
-# Go to local .ssh folder
-cd ~/.ssh/
-```
-```sh  
-# Copy local *.pem key to in .ssh folder
-cp "pem key path" .
-```
-```sh 
-# or Copy Manual local mac, linux, wsl on windows
-open .
-```
-```sh 
-# or Copy Manual local wsl
-explorer.exe .
-```
-```sh 
-# or Copy Manual local linux
-sudo apt install nautilus -y
-nautilus .
-```
-
-**Note**: If you get `It is required that your private key files are NOT accessible by others. This private key will be ignored.` error, you should change permits on the downloaded file to protect your private key:
-
-```sh 
-# giving permission to a specific user
-sudo chown -R username: ~/.ssh/name-of-your-private-key-file.pem
-```
-```sh 
-# for local ssh pem key permission error
-chmod 400 ~/.ssh/name-of-your-private-key-file.pem
-```
-
-#### Cloud Step 2.5: Configure local ssh Connection
-
-```sh
-# Build local ssh config File with nano editor in .ssh folder
-nano ~/.ssh/config
-```
-```sh 
-# Copy Configuration in local nano editor, then Save it! 
-Host mlops-zoomcamp                                         # ssh connection calling name
-    User ubuntu                                             # username AWS EC2
-    HostName <instance-public-IPv4-addr>                    # Public IP, it changes when Source EC2 is turned off.
-    IdentityFile ~/.ssh/name-of-your-private-key-file.pem   # Private SSH key file path
-    LocalForward 8888 localhost:8888                        # Connecting to a service on an internal network from the outside, static forward or set port user forward via on vscode 
-    StrictHostKeyChecking no   
-```
-  
-#### Cloud Step 2.6: Connect Created EC2 Instance
-
-```sh  
-# Connect Created EC2 Instance
-ssh mlops-zoomcamp
-```
-```sh 
-# Check USER is Connected EC2
-whoami
-```
-```sh 
-# for exit from AWS EC2 
-logout
-```
-
-
-
-## Environment Steps:   
-
-- https://learn.microsoft.com/tr-tr/windows/wsl/install
-- https://learn.microsoft.com/tr-tr/windows/wsl/basic-commands
-- https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-10#2-install-wsl
-- [Setting up WSL for a Seamless Data Science Workflow on Windows](https://www.youtube.com/watch?v=IWfsbOzQgXA)
-- [enabling gpu acceleration on ubuntu on wsl2 on Windows](https://ubuntu.com/tutorials/enabling-gpu-acceleration-on-ubuntu-on-wsl2-with-the-nvidia-cuda-platform#2-install-the-appropriate-windows-vgpu-driver-for-wsl)
-
-### WSL for Windows (Local)
-
-- **Install WSL**: Search for Windows PowerShell in your Windows search bar, then select Run as administrator.
-
-```sh 
-# Setup WSL defaulth Ubuntu(WSL)
-wsl --install
-```
-- [**if some error linux-kernel-update-package Ubuntu(WSL) on Windows**](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package)
-```sh
-# Check WSL version
-wsl --version
-```
-```sh
-# Update WSL
-wsl --update
-```
-- **Download Spesific Linux(WSL) on Windows**
-```sh 
-# Check Available WSL Distros
-wsl --list --online
-```
-```sh 
-# Download Ubuntu
-wsl --install -d ubuntu
-```
-```sh 
-# Set Defaulth WSL Ubuntu
-wsl --setdefault ubuntu
-```
-- **Update existing local packages Ubuntu(WSL) on Windows**
-```sh
-# Update Ubuntu existing local packages
-sudo apt update -y && sudo apt upgrade -y
-```
-```sh 
-# Exit WSL
-logout
-```
-- **Check State and Version Ubuntu(WSL) on Windows**
-```sh 
-# Check State and Version
-wsl -l -v
-```
-```sh
-# if ubuntu version 1 set 2 
-wsl --set-version ubuntu 2
-```
-```sh 
-# List Installed WSL Distros
-wsl --list --all
-```
-- **Connect Ubuntu(WSL) on Windows**
-```sh 
-# Connect WSL Ubuntu
-wsl
-```
-```sh 
-# Restart or Reconnect All Distros WSL
-wsl.exe --shutdown
-```
-- **Remove Ubuntu(WSL) on Windows**
-```sh 
-# Remove or Delete Ubuntu
-wsl --unregister ubuntu
-```
-
-### Step 1: Anaconda Distribution `Download` and `Install`.
-- https://www.anaconda.com/download#downloads
-
-Open Terminal `Local Mac, Linux, WSL on Windows` or `Connect Cloud Aws EC2 Linux` via SSH as mentioned above
-
-```sh
-# Download Anaconda via wget or curl
-wget https://repo.anaconda.com/archive/Anaconda3-2023.03-1-Linux-x86_64.sh
-```
-```sh 
-# Setup - Attention make sure after installing type "yes" for AUTO connect conda enviroment 
-bash Anaconda3-2023.03-1-Linux-x86_64.sh
-```
-```sh 
-# exit AWS EC2 or mac, linux, WSL on Windows
-logout
-```
-```sh 
-# Reopen Terminal or Reconnect Cloud and check ACTIVE environment conda base 
-ssh mlops-zoomcamp
-```
-
 
 ### Step 2: Update existing packages
 
 ```sh
-sudo apt update -y
+sudo apt update
 ```
 
-
 ### Step 3: Install Docker
-- https://www.simplilearn.com/tutorials/docker-tutorial
-- https://www.simplilearn.com/tutorials/docker-tutorial/how-to-install-docker-on-ubuntu
-- https://docs.docker.com/engine/install/linux-postinstall/
-
-**Note**: You directly download the Docker desktop from official site and toggle a key in the docker desktop app to start using Docker in WSL.
-- https://docs.docker.com/desktop/windows/wsl/
 
 ```sh
 sudo apt install docker.io
@@ -283,14 +49,13 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 ```
 
-
 ### Step 4: Install Docker Compose
-- https://www.simplilearn.com/tutorials/docker-tutorial/docker-compose#GoTop
 
 Install docker-compose in a separate directory
 
 ```sh
-mkdir -p ~/soft && cd ~/soft
+mkdir soft
+cd soft
 ```
 
 To get the latest release of Docker Compose, go to https://github.com/docker/compose and download the release for your OS.
@@ -326,153 +91,18 @@ source ~/.bashrc
 
 ### Step 5: Run Docker
 
-**Note**: If you get `docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/create": dial unix /var/run/docker.sock: connect: permission denied.` error, restart your VM instance. 
-
 ```sh
 docker run hello-world
 ```
 
+If you get `docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/create": dial unix /var/run/docker.sock: connect: permission denied.` error, restart your VM instance. 
 
-### Step 6: Run jupyter notebook
 
-- **Ready For Any Project**
+**Note**: If you get `It is required that your private key files are NOT accessible by others. This private key will be ignored.` error, you should change permits on the downloaded file to protect your private key:
 
-```sh
-# go to wsl home 
-cd
+ ```sh
+chmod 400 name-of-your-private-key-file.pem
 ```
-```sh 
-# for WSL - go to local HOME windows
-cd /mnt/c/Users/your-windows-username
-```
-```sh 
-# create folder jupyter_notebook in HOME folder, then go
-mkdir -p jupyter_notebook && cd jupyter_notebook
-```
-```sh 
-# new conda virtual environment
-conda create --name tf_py310 python=3.10 jupyter
-conda activate tf_py310
-```
-```sh 
-# run jupyter notebook, work on `venv` tf_py310 or base
-jupyter notebook
-```
-```sh 
-# for WSL - Close Tilix: Terminal 
-# Click to any Link access the notebook on Terminal with Ctrl+
-```
-
-
-### Step 7: Open new Notebook with Python Kernel
-
-```sh
-# Python Version Check
-!python -V
-```
-```sh 
-# Python path check
-!which python
-```
-```sh
-sudo apt update -y
-```
-
-
-### Step 8: Setup tensorflow on CPU
-```sh 
-# EC2 install Tensorflow 200+ mb
-pip install tensorflow-cpu
-
-# or 500+ mb
-pip install tensorflow --no-cache-dir
-```
-```sh 
-# for some model flow chart
-# pip install graphviz pydot
-conda install -c anaconda graphviz pydot
-sudo apt install graphviz
-```
-
-### Step 9: Conda conflict, inconsistent or Update
-```sh 
-# Attention!, remove unused packages and clear cache, can be remove spme Useful packegec need to install them
-conda clean --all
-```
-```sh 
-# collection of pre-installed packages and tools
-conda install anaconda --force-reinstall
-```
-
-**if The environment is inconsistent**
-```sh 
-# used to update or install Conda itself
-conda update -n base -c defaults conda --force-reinstall
-```
-
-**if packages conflict**
-```sh 
-# check and repair packages conflict
-conda update --all --force-reinstall
-```
-
-
-### Step: Setup GPU nvidia-cuda - _NOT RECOMMENDED_
-**WSL cuda Downloads**
-
-- https://developer.nvidia.com/cuda-downloads?target_os=Linux
-- https://lebaohiep.com/shaare/wEd-8g
-
-```sh
-# Download CUDA Installer for Linux WSL-Ubuntu 2.0 x86_64
-wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.0-1_all.deb
-sudo dpkg -i cuda-keyring_1.0-1_all.deb
-sudo apt-get update
-sudo apt-get -y install cuda
-```
-
-- **Continue for WSL**: https://www.tensorflow.org/install/pip#windows-wsl2_1
-```sh 
-nvidia-smi
-```
-```sh
-# conda install -c nvidia cuda-nvcc=11.3.58
-nvcc --version
-```
-
-**For Ubuntu(WSL)**
-
-- [WSL2 Installation Failing Miserably](https://discuss.tensorflow.org/t/wsl2-installation-failing-miserably/16236/6)
-- [Tensorflow/Pytorch with CUDA on WSL](https://lebaohiep.com/shaare/wEd-8g)
-
-```sh 
-conda install -c nvidia cuda-nvcc=11.3.58
-
-# Configure the XLA cuda directory
-mkdir -p $CONDA_PREFIX/etc/conda/activate.d
-printf 'export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CONDA_PREFIX/lib/\n' >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
-source $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
-
-# Copy libdevice file to the required path
-mkdir -p $CONDA_PREFIX/lib/nvvm/libdevice
-cp $CONDA_PREFIX/lib/libdevice.10.bc $CONDA_PREFIX/lib/nvvm/libdevice/
-
-# this is what worked for me but I used python 3.9, tensorflow 2.12, CUDA 11.8 and cuDNN 8.6.0
-```
-
-**if Required but mostly not, GLOBAL setup**
-
-**Note**: It's worth noting that when **using conda**, the CUDA packages are typically sourced from the **Anaconda repository** and might not always have the latest version available. If you require the **latest CUDA version**, using **apt or manually** downloading and installing CUDA from the official NVIDIA website might be necessary.
-
-- https://www.pugetsystems.com/labs/hpc/how-to-install-tensorflow-with-gpu-support-on-windows-10-without-installing-cuda-updated-1419/
-- https://docs.nvidia.com/cuda/wsl-user-guide/index.html
-```sh
-sudo apt install nvidia-cuda-toolkit
-```
-```sh
-sudo apt install nvidia-cudnn
-```
-
 
 ## 1.3 (Optional) Training a ride duration prediction model
 
@@ -540,86 +170,3 @@ Did you take notes? Add them here:
 * [What is MLOps? - Storytime by Pathik Ghugare](https://github.com/pathikg/MLOps-Zoomcamp-DataTalks/blob/main/week-01-introduction/MLOps-Introduction.md)
 * [Module 1 Notes by Stephen Barrie](https://stephen137.github.io/posts/MLOps_Zoomcamp_Week_1/MLOps_Zoomcamp_Week_1.html)
 * Send a PR, add your notes above this line
-
-
-[Building and Scaling a Machine Learning Platform - Magdalena Kuhn](https://www.youtube.com/watch?v=bNrBJwiLBWU)
-
-
-## Useful Scripts
-
-### Install or update the AWS CLI
-- https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-- https://linuxhint.com/install_aws_cli_ubuntu/
-
-```sh
-cd 
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-sudo apt install unzip -y
-unzip awscliv2.zip
-sudo ./aws/install
-```
-```sh
-# IAM > Security credentials > Create access key
-# Use access keys to send programmatic calls to AWS from the AWS CLI
-# AWS Access Key ID [None]	: Access key
-# AWS Secret Access Key [None]	: Secret access key
-# Default region name [None]	: us-east-1
-# Default output format [None]	: text
-aws configure
-```
-
-### AWS EC2 IP Updater for SSH Configuration
-
-**Note**: This script automatically updates the IP address of your EC2 instance in your SSH config file. This can be useful if your instance's IP address changes frequently (for example, when stopping and starting an EC2 instance).
-
-```sh
-# open and save the following bash script for AWS EC2 ip update:
-nano ~/.ssh/update_ssh_config.sh
-```
-
-Save the following bash script in a file named `update_ssh_config.sh`, replacing `your_instance_id_here` with your actual AWS EC2 instance ID:
-
-```sh
-#!/bin/bash
-INSTANCE_ID=your_instance_id_here
-REGION=us-east-1
-OUTPUT=text
-
-# Get the new public IP address of the EC2 instance
-NEW_IP=$(aws ec2 describe-instances  \
-                --instance-ids $INSTANCE_ID  \
-                --region $REGION \
-                --output $OUTPUT \
-                --query 'Reservations[0].Instances[0].PublicIpAddress')
-
-# Define the config template
-read -r -d '' SSH_CONFIG << EOM
-
-# Updated Configuration in local .ssh/config
-Host mlops-zoomcamp                         # ssh connection calling name
-    User ubuntu                             # username AWS EC2
-    HostName $NEW_IP                        # Public IP, it changes when Source EC2 is turned off.
-    IdentityFile ~/.ssh/mlops-zoomcamp.pem  # Private SSH key file path
-    LocalForward 8888 localhost:8888        # Connecting to a service on an internal network from the outside, static f>
-    StrictHostKeyChecking no
-EOM
-
-# Write the new SSH config
-echo "$SSH_CONFIG" > ~/.ssh/config
-echo "Updated IP: $NEW_IP"
-```
-
-```sh
-# Make the script executable
-chmod +x ~/.ssh/update_ssh_config.sh
-```
-
-```sh
-# Run the script update: AWS EC2 IP Adress
-~/.ssh/update_ssh_config.sh
-```
-
-```sh  
-# Connect EC2 Instance Updated IP SSH Config
-ssh mlops-zoomcamp
-```

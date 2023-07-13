@@ -1,12 +1,9 @@
-<div align="right">
-  <h3><a href='./01-intro/README.md'>Go to: MLOPS Environment Preparation</a></h3>
-</div>
+# MLOps Zoomcamp
 
-# mlops-zoomcamp-2023
-
-<p align="center">  
+<p align="center">
   <a href="https://airtable.com/shrCb8y6eTbPKwSTL" target="_blank">
-    <img src="https://github.com/celik-muhammed/mlops-zoomcamp/blob/main/images/banner.png?raw=true" height="200"></a>
+    <img src="images/IMG_20230323_134059_927.png">
+  </a>
 </p>
 
 <p align="center">
@@ -15,12 +12,14 @@
 
 Our MLOps Zoomcamp course
 
+- Sign up here: https://airtable.com/shrCb8y6eTbPKwSTL
 - Register in [DataTalks.Club's Slack](https://datatalks.club/slack.html)
 - Join the [`#course-mlops-zoomcamp`](https://app.slack.com/client/T01ATQK62F8/C02R98X7DS9) channel
 - [Tweet about the course!](https://ctt.ac/fH67W)
 - Start watching course videos! [Course playlist](https://www.youtube.com/playlist?list=PL3MmuxUbc_hIUISrluw_A7wDSmfOhErJK)
 - [Technical FAQ](https://docs.google.com/document/d/12TlBfhIiKtyBv8RnsoJR6F72bkPDGEvPOItJIxaEzE0/edit) 
 - For announcements, join our [Telegram channel](https://t.me/dtc_courses)
+
 
 ## Taking the course
 
@@ -29,25 +28,59 @@ Our MLOps Zoomcamp course
 * **Start**: 15 May 2023 (Monday) at 17:00 CET
 * **Registration link**: https://airtable.com/shrCb8y6eTbPKwSTL
 * Subscribe to our [public Google Calendar](https://calendar.google.com/calendar/?cid=M3Jzbmg0ZDA2aHVsY2M1ZjcyNDJtODNyMTRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ) (it works from Desktop only)
-* [Cohort folder](https://github.com/celik-muhammed/mlops-zoomcamp/tree/main/cohorts)
+* [Cohort folder](cohorts/2023)
+
+### Self-paced mode
+
+All the materials of the course are freely available, so that you
+can take the course at your own pace
+
+* Follow the suggested syllabus (see below) week by week
+* You don't need to fill in the registration form. Just start watching the videos and join Slack
+* Check [FAQ](https://docs.google.com/document/d/12TlBfhIiKtyBv8RnsoJR6F72bkPDGEvPOItJIxaEzE0/edit) if you have problems
+* If you can't find a solution to your problem in FAQ, ask for help in Slack
+
+## Overview
+
+### Objective
+
+Teach practical aspects of productionizing ML services — from training and experimenting to model deployment and monitoring.
+
+### Target audience
+
+Data scientists and ML engineers. Also software engineers and data engineers interested in learning about putting ML in production.
+
+### Pre-requisites
+
+* Python
+* Docker
+* Being comfortable with command line 
+* Prior exposure to machine learning (at work or from other courses, e.g. from [ML Zoomcamp](https://github.com/alexeygrigorev/mlbookcamp-code/tree/master/course-zoomcamp))
+* Prior programming experience (at least 1+ year)
 
 
-## What Does MLOps Mean?
 
-- **`Machine learning operations (MLOps)`** is an approach to managing the entire lifecycle of a machine learning model — including its training, tuning, everyday use in a production environment and retirement.
-- **`MLflow`** is an open source platform for managing the end-to-end machine learning lifecycle.
+### Asking for help in Slack
+
+The best way to get support is to use [DataTalks.Club's Slack](https://datatalks.club/slack.html). Join the [`#course-mlops-zoomcamp`](https://app.slack.com/client/T01ATQK62F8/C02R98X7DS9) channel.
+
+To make discussions in Slack more organized:
+
+* Follow [these recommendations](asking-questions.md) when asking for help
+* Read the [DataTalks.Club community guidelines](https://datatalks.club/slack/guidelines.html)
 
 
 ## Syllabus
 
 ### [Module 1: Introduction](01-intro)
+
 * What is MLOps
 * MLOps maturity model
 * Running example: NY Taxi trips dataset
 * Why do we need MLOps
 * Course overview
 * Environment preparation
-* [Submitted Homework 1](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/01-intro/Ride-Duration-Prediction-using-Regression-Analysis.ipynb)
+* Homework
 
 [More details](01-intro)
 
@@ -59,9 +92,12 @@ Our MLOps Zoomcamp course
 * Saving and loading models with MLflow
 * Model registry
 * MLflow in practice
-* [Submitted Homework 2](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/02-experiment-tracking/Mlflow-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
+* Homework
 
 [More details](02-experiment-tracking)
+
+[**Weights and biases workshop**](cohorts/2023/02-experiment-tracking/wandb.md) 
+
 
 ### [Module 3: Orchestration and ML Pipelines](03-orchestration)
 
@@ -69,7 +105,7 @@ Our MLOps Zoomcamp course
 * Prefect 2.0
 * Turning a notebook into a pipeline
 * Deployment of Prefect flow
-* [Submitted Homework 3](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/03-orchestration/Prefect-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
+* Homework
 
 [More details](03-orchestration)
 
@@ -80,7 +116,7 @@ Our MLOps Zoomcamp course
 * Web service: model deployment with Flask
 * Streaming: consuming events with AWS Kinesis and Lambda
 * Batch: scoring data offline
-* [Submitted Homework 4](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/04-deployment/Deployment-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
+* Homework
 
 [More details](04-deployment)
 
@@ -90,7 +126,6 @@ Our MLOps Zoomcamp course
 * Monitoring ML-based services
 * Monitoring web services with Prometheus, Evidently, and Grafana
 * Monitoring batch jobs with Prefect, MongoDB, and Evidently
-* [Submitted Homework 5](https://github.com/celik-muhammed/mlops-zoomcamp-2023/blob/master/cohorts/2023/05-monitoring/Monitoring-Ride-Duration-Prediction-Using-Regression-Analysis.ipynb)
 
 [More details](05-monitoring)
 
@@ -187,3 +222,6 @@ Thanks to the course sponsors for making it possible to create this course
     <img height="100" src="https://datatalks.club/images/partners/wandb-abb.svg">
   </a>
 </p>
+
+
+
